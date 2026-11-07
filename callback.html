@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Hollow Terrors Analytics — Authorization</title></head>
+<body style="font-family: sans-serif; background:#0a0a0c; color:#f2f2f2; text-align:center; padding-top:80px;">
+<h1>Authorization received</h1>
+<p id="msg">Reading the authorization code…</p>
+<p id="code" style="font-size:20px; word-break:break-all; color:#ff4655;"></p>
+<p>You can close this tab and return to the setup.</p>
+<script>
+  var q = new URLSearchParams(window.location.search);
+  var code = q.get('code');
+  if (code) {
+    document.getElementById('msg').textContent = 'Your authorization code is:';
+    document.getElementById('code').textContent = code;
+  } else {
+    document.getElementById('msg').textContent = 'No code was returned. ' + (q.get('error_description') || q.get('error') || '');
+  }
+</script>
+</body>
+</html>
